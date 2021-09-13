@@ -16,7 +16,7 @@ class CreatePhotosTable extends Migration
         Schema::create('photos', function (Blueprint $table) {
             $table->id();
             $table->string('url');
-            $table->foreignId('joueur_id')->constrained('joueurs','id');
+            $table->foreignId('joueur_id')->constrained('joueurs','id')->onDelete('cascade');
             $table->timestamps();
         });
     }

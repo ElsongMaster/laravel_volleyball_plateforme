@@ -13,7 +13,7 @@ class Photo extends Model
 
     protected $fillable = ["url"];
 
-    public function joueurs(){
-        return $this->hasOne(Joueur::class);
+    public function joueur(){
+        return $this->belongsTo(Joueur::class);
     }
 }

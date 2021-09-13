@@ -1,5 +1,6 @@
 <?php
-
+use App\Http\Controllers\EquipeController;
+use App\Http\Controllers\JoueurController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('pages.home');
+})->name('home');
+
+Route::resource('equipes', EquipeController::class);
+Route::resource('joueurs', JoueurController::class);

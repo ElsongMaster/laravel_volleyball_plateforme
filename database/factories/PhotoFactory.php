@@ -21,11 +21,12 @@ class PhotoFactory extends Factory
      * @return array
      */
     public function definition()
-    {
+    {   
+        static $i=1;
         return [
             
                "url"=> $this->faker->imageUrl($width = 640, $height = 480),
-               "joueur_id"=>$this->faker->numberBetween(1,count(Joueur::all()))
+               "joueur_id"=>$i++
             
         ];
     }

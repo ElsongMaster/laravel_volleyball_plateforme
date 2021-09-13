@@ -27,6 +27,7 @@ class EquipeFactory extends Factory
                 "nom_club"=>$this->faker->word(),
                 "ville"=>$this->faker->word(),
                 "pays"=>$this->faker->word(),
+                "max_joueurs"=>$this->faker->numberBetween(9,12),
                 "continent_id"=>$this->faker->numberBetween(1,count(Continent::all())),
             
         ];

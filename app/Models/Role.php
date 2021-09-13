@@ -13,7 +13,7 @@ class Role extends Model
     protected $fillable = ["nom"];
 
     public function joueurs(){
-        return $this->hasOne(Joueur::class);
+        return $this->hasMany(Joueur::class);
     }
 
 

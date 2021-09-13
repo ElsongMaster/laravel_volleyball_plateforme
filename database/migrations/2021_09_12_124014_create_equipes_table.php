@@ -18,7 +18,8 @@ class CreateEquipesTable extends Migration
             $table->string('nom_club');
             $table->string('ville');
             $table->string('pays');
-            $table->foreignId('continent_id')->constrained('continents','id');
+            $table->integer('max_joueurs');
+            $table->foreignId('continent_id')->constrained('continents','id')->onDelete('cascade');
             $table->timestamps();
         });
     }

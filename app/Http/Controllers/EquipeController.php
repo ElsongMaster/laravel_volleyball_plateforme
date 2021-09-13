@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Equipe;
+use App\Models\Continent;
 use Illuminate\Http\Request;
 
 class EquipeController extends Controller
@@ -14,7 +15,8 @@ class EquipeController extends Controller
      */
     public function index()
     {
-        //
+        $datas = Equipe::all();
+        return view('pages.allEquipes',compact('datas'));
     }
 
     /**
@@ -24,7 +26,8 @@ class EquipeController extends Controller
      */
     public function create()
     {
-        //
+        $continents = Continent::all();
+        return view('equipes.create',compact('continents'));
     }
 
     /**
@@ -33,9 +36,25 @@ class EquipeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $rq)
     {
-        //
+             request()->validate([
+            "nom_club"=>["required","min:1","max:100"],
+            "ville"=>["required"],
+            "pays"=>["required"],
+            "max_joueurs"=>["required","numeric"],
+            "continent_id"=>["required"],
+        ]);
+        $newEntry = new Equipe;
+        $newEntry->nom_club = $rq->nom_club;
+        $newEntry->ville = $rq->ville;
+        $newEntry->pays = $rq->pays;
+        $newEntry->max_joueurs = $rq->max_joueurs;
+        $newEntry->continent_id = $rq->continent_id;
+
+        $newEntry->save();
+
+        return redirect()->route('equipes.index');
     }
 
     /**
@@ -46,7 +65,7 @@ class EquipeController extends Controller
      */
     public function show(Equipe $equipe)
     {
-        //
+        return view('equipes.show',compact('equipe'));
     }
 
     /**
@@ -57,7 +76,9 @@ class EquipeController extends Controller
      */
     public function edit(Equipe $equipe)
     {
-        //
+        $continents = Continent::all();
+
+        return view('equipes.edit',compact('equipe','continents'));
     }
 
     /**
@@ -67,9 +88,24 @@ class EquipeController extends Controller
      * @param  \App\Models\Equipe  $equipe
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Equipe $equipe)
+    public function update(Request $rq, Equipe $equipe)
     {
-        //
+             request()->validate([
+            "nom_club"=>["required","min:1","max:100"],
+            "ville"=>["required"],
+            "pays"=>["required"],
+            "max_joueurs"=>["required","numeric"],
+            "continent_id"=>["required"],
+        ]);
+        $equipe->nom_club = $rq->nom_club;
+        $equipe->ville = $rq->ville;
+        $equipe->pays = $rq->pays;
+        $equipe->max_joueurs = $rq->max_joueurs;
+        $equipe->continent_id = $rq->continent_id;
+
+        $equipe->save();
+
+        return redirect()->route('equipes.show',$equipe->id);
     }
 
     /**
@@ -80,6 +116,8 @@ class EquipeController extends Controller
      */
     public function destroy(Equipe $equipe)
     {
-        //
+        $equipe->delete();
+
+        return redirect()->route('equipes.index');
     }
 }

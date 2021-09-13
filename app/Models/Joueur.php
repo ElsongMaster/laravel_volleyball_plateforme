@@ -15,13 +15,13 @@ class Joueur extends Model
     protected $fillable = ["nom","prenom","age","tel","email","genre","pays_origine"];
 
 
-    public function roles(){
-        return $this->hasOne(Role::class);
+    public function role(){
+        return $this->belongsTo(Role::class);
     }
-    public function photos(){
-        return $this->hasOne(Photos::class);
+    public function photo(){
+        return $this->hasOne(Photo::class);
     }
-    public function equipes(){
+    public function equipe(){
         return $this->belongsTo(Equipe::class);
     }
 }

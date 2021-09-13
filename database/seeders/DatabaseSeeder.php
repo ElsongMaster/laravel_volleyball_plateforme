@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             ContinentSeeder::class
         ]);
         \App\Models\Equipe::factory(4)->create();
-         \App\Models\Joueur::factory(48)->create();
-        \App\Models\Photo::factory(48)->create();
+         \App\Models\Joueur::factory(30)->create();
+        \App\Models\Photo::factory(30)->create();
     }
 }
