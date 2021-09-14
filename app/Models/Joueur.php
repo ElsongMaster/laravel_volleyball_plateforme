@@ -15,7 +15,7 @@ class Joueur extends Model
     protected $fillable = ["nom","prenom","age","tel","email","genre","pays_origine"];
 
 
-    public function roles(){
+    public function role(){
         return $this->belongsTo(Role::class);
     }
     public function photo(){

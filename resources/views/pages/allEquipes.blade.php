@@ -3,7 +3,7 @@
 
 
 @section('content')
-<div class="container">
+<div class="container mb-5">
 
     <h1 class="text-uppercase text-center my-3">Les équipes</h1>
     <table class="table">
