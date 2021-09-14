@@ -57,19 +57,19 @@ class JoueurController extends Controller
         $newEntry->nom = $rq->nom;
         $newEntry->prenom = $rq->prenom;
         $newEntry->age = $rq->age;
+        $newEntry->tel = $rq->tel;
         $newEntry->email = $rq->email;
         $newEntry->genre = $rq->genre;
         $newEntry->pays_origine = $rq->pays_origine;
         $newEntry->role_id = $rq->role_id;
         $newEntry->equipe_id = $rq->equipe_id;
         $newEntry->save();
-        $photo = new Photo;
-        $photo->url = $rq->url;
-        $photo->joueur_id = $newEntry->id;
-
-        $photo->save();
-
+        
         $rq->file("photo")->storePublicly("img","public");
+        $photo = new Photo;
+        $photo->url =  $rq->file('photo')->hashName();
+        $photo->joueur_id = $newEntry->id;
+        $photo->save();
 
         return redirect()->route('joueurs.index');
     }
@@ -122,6 +122,7 @@ class JoueurController extends Controller
         $joueur->nom = $rq->nom;
         $joueur->prenom = $rq->prenom;
         $joueur->age = $rq->age;
+        $joueur->tel = $rq->tel;
         $joueur->email = $rq->email;
         $joueur->genre = $rq->genre;
         $joueur->pays_origine = $rq->pays_origine;
@@ -148,9 +149,9 @@ class JoueurController extends Controller
     {
         Storage::disk("public")->delete("img/".$joueur->photo->url);
         
-        $joueur->delete();
         $joueur->photo->delete();
+        $joueur->delete();
 
-        return redirect()->back();
+        return redirect()->route('joueurs.index');
     }
 }

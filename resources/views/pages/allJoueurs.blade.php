@@ -26,10 +26,11 @@
             <td>{{$data->prenom}}</td>
             <td>{{$data->age}}</td>
             <td>{{$data->role->nom}}</td>
+            {{-- {{dd($datas)}} --}}
             <td class="d-flex justify-content-evenly">
                 <a href="{{route('joueurs.show',$data->id)}}" class="btn btn-info"><i class="fas fa-eye"></i></a>
                 <a href="{{route('joueurs.edit',$data->id)}}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
-                <form action="{{route('joueurs.destroy',$data->id,$data->photo->url)}}" method="post">
+                <form action="{{route('joueurs.destroy',$data->id)}}" method="post">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>

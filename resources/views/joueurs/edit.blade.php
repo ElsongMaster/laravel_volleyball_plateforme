@@ -4,7 +4,7 @@
 
 
 @section('content')
- <div class="container d-flex flex-column w-75">
+ <div class="container d-flex flex-column mb-5 w-75">
 @if(session()->has('message'))
     <div class="alert alert-success">
         {{ session()->get('message') }}
@@ -59,7 +59,7 @@
 
 <div class="mb-3">
     <label for="pays_origine" class="form-label">Pays d'origine</label>
-    <input type="text" value = "{{$joueur->pays_origine}}"  class="form-control" id="pays_origine" name="genre" >
+    <input type="text" value = "{{$joueur->pays_origine}}"  class="form-control" id="pays_origine" name="pays_origine" >
 </div>
 <div class="mb-3">
     <label for="photo" class="form-label">Photo</label>

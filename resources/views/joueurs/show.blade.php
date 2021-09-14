@@ -8,7 +8,13 @@
 <div class="container d-flex flex-column align-items-center">
     <h1 class="text-center text-uppercase my-2 text-decoration-underline px-2">Détail joueur</h1>
     <div class="card" style="width: 18rem;">
-      <img src="{{$joueur->photo->url}}" class="card-img-top" alt="...">
+    @if (Storage::disk('public')->exists('img/'.$joueur->photo->url))
+    
+    <img src="{{asset('img/'.$joueur->photo->url)}}" class="card-img-top" alt="...">
+    @else
+    
+    <img src="{{$joueur->photo->url}}" class="card-img-top" alt="...">
+    @endif
       <div class="card-body">
         <h5 class="card-title"><span class="text-decoration-underline">ID:</span><span class="text-primary">{{$joueur->id}}</span></h5>
         <p class="card-text  "><span class="text-decoration-underline">Nom:</span> <span class="text-primary">{{$joueur->nom}}</span></p>

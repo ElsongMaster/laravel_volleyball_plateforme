@@ -23,7 +23,7 @@ class CreateJoueursTable extends Migration
             $table->string('genre');
             $table->string('pays_origine');
             $table->foreignId('role_id')->constrained('roles','id')->onDelete('cascade');
-            $table->foreignId('equipe_id')->constrained('equipes','id')->onDelete('cascade')->nullable();
+            $table->foreignId('equipe_id')->nullable()->constrained('equipes','id')->onDelete('cascade');
             $table->timestamps();
         });
     }

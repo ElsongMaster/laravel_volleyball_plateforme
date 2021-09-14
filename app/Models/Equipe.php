@@ -13,7 +13,7 @@ class Equipe extends Model
     protected $table = "equipes";
     protected $fillable = ["nom_club","ville","pays"];
 
-    public function continents(){
+    public function continent(){
         return $this->belongsTo(Continent::class);
     }
     public function joueurs(){
