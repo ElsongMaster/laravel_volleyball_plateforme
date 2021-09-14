@@ -40,7 +40,7 @@ class EquipeSeeder extends Seeder
                 "nom_club"=>$faker->word(),
                     "ville"=>$faker->word(),
                     "pays"=>$faker->word(),
-                    "max_joueurs"=>"70",
+                    "max_joueurs"=>"11",
                     "continent_id"=>$faker->numberBetween(1,count(Continent::all())),
             ]
         ]);

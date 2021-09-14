@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             JoueurSeeder::class
         ]);
         \App\Models\Equipe::factory(4)->create();
-         \App\Models\Joueur::factory(40)->create();
-        \App\Models\Photo::factory(40)->create();
+         \App\Models\Joueur::factory(60)->create();
+        \App\Models\Photo::factory(60)->create();
     }
 }
