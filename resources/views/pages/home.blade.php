@@ -3,7 +3,7 @@
 
 
 @section('content')
-<div class="container">
+<div class="container mb-5">
     <h1 class="text-center">Bienvenu sur la page home</h1>
 
     @include('partials.sections.section1')

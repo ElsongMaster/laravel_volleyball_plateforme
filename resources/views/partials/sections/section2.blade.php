@@ -1,4 +1,4 @@
-<section>
+<section class="my-5">
     <h2 class=" text-center my-3">2 equipes non remplites</h2>
     <table class="table">
       <thead>

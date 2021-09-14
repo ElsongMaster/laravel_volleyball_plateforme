@@ -1,4 +1,4 @@
-<section>
+<section class="my-5">
     <h2 class=" text-center my-3">4 joueurs sans équipes au hasard</h2>
     <table class="table">
       <thead>
@@ -11,8 +11,8 @@
           <th scope="col">Email</th>
           <th scope="col">Genre</th>
           <th scope="col">Pays d'origine</th>
-          {{-- <th scope="col">Role</th>
-          <th scope="col">Equipe</th> --}}
+          {{-- <th scope="col">Role</th>--}}
+          <th scope="col">Equipe</th>
         </tr>
       </thead>
       <tbody>
@@ -21,6 +21,7 @@
 
                   
             <tr>
+            <th scope="row">{{$player->id}}</th>
             <td>{{$player->nom}}</td>
             <td>{{$player->prenom}}</td>
             <td>{{$player->age}}</td>
@@ -28,8 +29,8 @@
             <td>{{$player->email}}</td>
             <td>{{$player->genre}}</td>
             <td>{{$player->pays_origine}}</td>
-            {{-- <td>{{$player->roles()->nom}}</td>
-            <td>{{$player->equipes()->nom_club}}</td> --}}
+            {{-- <td>{{$player->roles()->nom}}</td>--}}
+            <td>{{$player->equipe===NULL?"pas d'équipe":$player->equipe->nom_club}}</td> 
 
             </tr>
 

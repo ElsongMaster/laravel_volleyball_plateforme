@@ -11,10 +11,13 @@ class HomeController extends Controller
         $joueurs = new Joueur;
         $equipes = new Equipe;
         $count = 0;
-        // $fullTeam = $equipes->join('joueurs','joueurs.equipe_id','=','equipes.id')->get()->groupBy('equipes.id');
+
+         $playerWithTeam =joueur::all()->where('equipe_id','!=',NULL)->take(4);
+
         $fullTeam = Equipe::all();
-        $playersRandom = joueur::all()->random()->where('equipe_id','=',NULL)->get();
-       
-        return view('pages.home',compact('fullTeam','count','playersRandom'));
+        $playersRandom = joueur::all()->random()->where('equipe_id','=',NULL)->get()->take(4);
+        $playersMaleWithTeam = Joueur::all()->where('genre','=','M')->where('equipe_id','!=',NULL)->take(5);
+       $playersRandomWithTeam = joueur::all()->random()->where('equipe_id','<>',NULL)->get()->take(5);
+        return view('pages.home',compact('fullTeam','count','playersRandom','playerWithTeam','playersRandomWithTeam','playersMaleWithTeam'));
     }
 }
